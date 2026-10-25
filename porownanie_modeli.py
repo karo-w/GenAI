@@ -12,7 +12,7 @@ client = Groq(api_key=os.getenv('GROQ_API_KEY'))
 # nazwy modeli w jednym miejscu - latwiej je podmienic, gdy dostawca
 # wycofa model (patrz uwaga pod skryptem)
 MODEL = 'openai/gpt-oss-120b'
-MODEL_LOKALNY = 'llama3.1'
+MODEL_LOKALNY = 'gemma3:1b'
 PROMPT = ('Jesteś ekspertem od sztucznej inteligencji. '
  'Wyjaśnij w 3-4 zdaniach, czym jest transformer '
  'w kontekście modeli językowych. Użyj prostego języka, '
