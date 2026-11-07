@@ -1,0 +1,63 @@
+
+################################################################
+### qwen/qwen3.8-27b | zero-shot
+################################################################
+1 [ZLE] wzorzec=SPRZĘT | NORMALNY        wynik=OPROGRAMOWANIE | NORMALNY  format=NIE
+ Analizując zgłoszenie, kluczowym problemem jest brak wykrywania urządzenia przez komputer. Choć rzutnik jest elementem sprzętowym, komunikat „komputer nie wykry
+2 [OK ] wzorzec=KONTO | WYSOKI           wynik=KONTO | WYSOKI    format=NIE
+ Analizując treść zgłoszenia, kluczowym problemem jest niemożność zalogowania się do systemu (poczty uczelnianej) oraz wzmianka o zresetowaniu hasła. Choć użytko
+3 [OK ] wzorzec=SIEĆ | WYSOKI            wynik=SIEĆ | WYSOKI    format=NIE
+ Analizując zgłoszenie, kluczowym problemem jest niestabilność połączenia bezprzewodowego (Wi-Fi), która objawia się cyklicznymi przerwami w transmisji danych. T
+4 [ZLE] wzorzec=KONTO | NORMALNY         wynik=SPRZĘT | NORMALNY  format=NIE
+ Analizując zgłoszenie, kluczowym problemem jest utrata możliwości połączenia z konkretną siecią (eduroam) po wykonaniu operacji na poziomie konta (zmiana hasła)
+5 [ZLE] wzorzec=SPRZĘT | WYSOKI          wynik=SPRZĘT | ?         format=NIE
+ Aby poprawnie zaklasyfikować to zgłoszenie, przeanalizujmy jego kluczowe elementy: |  | 1.  **Kategoria:** |     *   Problem dotyczy **drukarki sieciowej**. |  
+
+################################################################
+### qwen/qwen3.8-27b | few-shot
+################################################################
+1 [OK ] wzorzec=SPRZĘT | NORMALNY        wynik=SPRZĘT | NORMALNY  format=tak
+ SPRZĘT | NORMALNY
+2 [OK ] wzorzec=KONTO | WYSOKI           wynik=KONTO | WYSOKI    format=tak
+ KONTO | WYSOKI
+3 [OK ] wzorzec=SIEĆ | WYSOKI            wynik=SIEĆ | WYSOKI    format=tak
+ SIEĆ | WYSOKI
+4 [ZLE] wzorzec=KONTO | NORMALNY         wynik=SIEĆ | WYSOKI    format=tak
+ SIEĆ | WYSOKI
+5 [OK ] wzorzec=SPRZĘT | WYSOKI          wynik=SPRZĘT | WYSOKI    format=tak
+ SPRZĘT | WYSOKI
+
+################################################################
+### llama3.1 | zero-shot
+################################################################
+1 [ZLE] wzorzec=SPRZĘT | NORMALNY        wynik=SIEĆ | WYSOKI    format=NIE
+ Kategoria: SIEĆ | Priorytet: WYSOKI
+2 [ZLE] wzorzec=KONTO | WYSOKI           wynik=OPROGRAMOWANIE | WYSOKI    format=NIE
+ Kategoria: OPROGRAMOWANIE | Priorytet: WYSOKI
+3 [OK ] wzorzec=SIEĆ | WYSOKI            wynik=SIEĆ | WYSOKI    format=NIE
+ Kategoria: SIEĆ | Priorytet: WYSOKI
+4 [ZLE] wzorzec=KONTO | NORMALNY         wynik=SIEĆ | WYSOKI    format=NIE
+ Kategoria: SIEĆ | Priorytet: WYSOKI
+5 [ZLE] wzorzec=SPRZĘT | WYSOKI          wynik=SIEĆ | WYSOKI    format=NIE
+ Kategoria: SIEĆ | Priorytet: WYSOKI
+
+################################################################
+### llama3.1 | few-shot
+################################################################
+1 [OK ] wzorzec=SPRZĘT | NORMALNY        wynik=SPRZĘT | NORMALNY  format=tak
+ SPRZĘT | NORMALNY
+2 [OK ] wzorzec=KONTO | WYSOKI           wynik=KONTO | WYSOKI    format=tak
+ KONTO | WYSOKI
+3 [ZLE] wzorzec=SIEĆ | WYSOKI            wynik=? | NORMALNY  format=NIE
+ INFRASTRUKTURA | NORMALNY
+4 [ZLE] wzorzec=KONTO | NORMALNY         wynik=? | NORMALNY  format=NIE
+ KONFIGURACJA | NORMALNY
+5 [OK ] wzorzec=SPRZĘT | WYSOKI          wynik=SPRZĘT | WYSOKI    format=tak
+ SPRZĘT | WYSOKI
+
+################################################################
+### PODSUMOWANIE (trafnosc / format)
+################################################################
+WARIANT     qwen/qwen3.8-27b      llama3.1              
+zero-shot   2/5 / 0/5             1/5 / 0/5             
+few-shot    4/5 / 5/5             3/5 / 3/5             
